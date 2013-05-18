@@ -1,0 +1,3 @@
+﻿@{string color = ViewBag.ColorTexto;
+    <div style="color:@color">@ViewBag.Mensaje</div>   
+}

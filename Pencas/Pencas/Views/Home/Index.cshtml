@@ -1,0 +1,422 @@
+﻿@{
+    ViewBag.Title = "Home Page";
+}
+
+
+<div id="ventanaPronosticos" style="display:none; z-index:999; width:80%; height:900px; position:absolute; border:solid black 5px; background-color:White">
+    <div style="width:10%; float:left">Token:</div>
+    <div style="width:20%; float:left"><input type="text" style="width:80%"/></div>
+    <div style="width:30%; float:left"><input type="submit" value="Mostrar!" onclick="mostrarPronostico()"/></div>
+    <div style="height:50px"><a id="botonCerrar" href="#" onclick="cerrarVentanaPronosticos()">Cerrar</a></div>
+    <div id="pronosticos" style="display:none">Acá se van a desplegar los pronósticos si puso bien el token</div>
+</div>
+<div id="divVerPronostico"><input id="inputVerPronostico" type="submit" value="Ver Pronóstico" onclick="ventanaMostrarPronostico()"/></div>
+<br />
+<div id="divMensaje"></div>
+<br />
+<br />
+@using (Ajax.BeginForm("EnviarPronostico", "Home", new AjaxOptions { UpdateTargetId = "divMensaje" }))
+{
+<div style="width:6%; float:left">Email:</div><div><input name="email"/></div>
+<div style="width:6%; float:left">Token:</div><div><input name="token"/></div>
+@*@Html.ActionLink("Ver mi pronostico", "VerPronostico", "Home", null, new{target = "_blank"})*@
+
+<h2>LlenarResultados</h2>
+
+    <div style="margin-left:12%;">
+        <div style="float:left; width:9%; margin-top:4px">15 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Brasil</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Brasil.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c1" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c2" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Japon.png" width="50%" style="border:solid black 1px" alt=""/></div>
+        <div style="margin-top:4px">Japón</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">16 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">México</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Mexico.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c3" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c4" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Italia.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Italia</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">19 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Brasil</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Brasil.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c5" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c6" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Mexico.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">México</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">19 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">19:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Italia</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Italia.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c7" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c8" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Japon.png" width="50%" style="border:solid black 1px" alt=""/></div>
+        <div style="margin-top:4px">Japón</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">22 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Italia</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Italia.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c9" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c10" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Brasil.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Brasil</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">22 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Japón</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Japon.png" style="border:solid black 1px" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c11" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c12" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Mexico.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">México</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">16 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">19:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">España</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/España.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c13" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c14" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Uruguay.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Uruguay</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">17 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Tahití</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Tahiti.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c15" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c16" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Nigeria.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Nigeria</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">20 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">España</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/España.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c17" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c18" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Tahiti.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Tahití</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">20 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">19:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Nigeria</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Nigeria.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c19" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c20" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Uruguay.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Uruguay</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">23 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Nigeria</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Nigeria.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c21" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c22" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/España.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">España</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">23 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Uruguay</div>
+        <div style="float:left; width:5%; margin-top:4px"><img src="/Content/img/Uruguay.png" width="50%" alt=""/></div>
+        <div style="float:left; width:6%"><input name="c23" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c24" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px"><img src="/Content/img/Tahiti.png" width="50%" alt=""/></div>
+        <div style="margin-top:4px">Tahití</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">26 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Primero A</div>
+        <div style="float:left; width:5%; margin-top:4px">&nbsp</div>
+        <div style="float:left; width:6%"><input name="c25" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c26" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px">&nbsp</div>
+        <div style="margin-top:4px">Segundo B</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">27 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">16:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Primero B</div>
+        <div style="float:left; width:5%; margin-top:4px">&nbsp</div>
+        <div style="float:left; width:6%"><input name="c27" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c28" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px">&nbsp</div>
+        <div style="margin-top:4px">Segundo A</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">30 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">13:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Perdedor Cruce 1</div>
+        <div style="float:left; width:5%; margin-top:4px">&nbsp</div>
+        <div style="float:left; width:6%"><input name="c29" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c30" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px">&nbsp</div>
+        <div style="margin-top:4px">Perdedor Cruce 2</div>
+        <div>&nbsp;</div>
+        <div style="float:left; width:9%; margin-top:4px">30 de Junio</div>
+        <div style="float:left; width:5%; margin-top:4px">13:00</div>
+        <div style="float:left; width:14%; margin-top:4px; text-align:right; margin-right:2%">Ganador Cruce 1</div>
+        <div style="float:left; width:5%; margin-top:4px">&nbsp</div>
+        <div style="float:left; width:6%"><input name="c31" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:2%; margin-top:4px">-</div>
+        <div style="float:left; width:6%"><input name="c32" maxlength = 2 style="text-align:center;width:70%" type="number" min="0" max="99" value="0" onkeydown = "return ingresoValido(event)" ondelete = "return false" onpaste = "return false"  /></div>
+        <div style="float:left; width:5%; margin-left:2%; margin-top:4px">&nbsp</div>
+        <div style="margin-top:4px">Ganador Cruce 2</div>
+        <div>&nbsp;</div>
+    </div>
+    
+    <input id="resultados" name="resultados" type="hidden" value="f"/>
+    
+    <input type="submit" value="Enviar Pronóstico" onclick="cargarResultados()"/>
+}
+
+
+
+
+<script type="text/javascript">
+    function cargarResultados() {
+        //Se cargan los resultados ingresados para pasarle al controlador
+        var retorno = "";
+        for (var i = 1; i < 32; i++) {
+            if (i % 2 == 1) {
+                retorno = retorno + ((i + 1) / 2) + ";";
+            }
+            retorno = retorno + $("input[name=c" + i + "]").val() + ";";
+        }
+        retorno = retorno + $("input[name=c32]").val();
+        $("#resultados").val(retorno);
+
+        //Se hace scroll animado hacia el mensaje
+//        var container = $('divVerPronostico');
+//        var scrollTo = $('#inputVerPronostico');
+        //        container.animate({scrollTop: scrollTo.offset().top - container.offset().top + container.scrollTop()});​
+
+        $('html,body').animate({ scrollTop: $("#inputVerPronostico").offset().top }, 800);
+        $("#divMensaje").attr("style", "background-color:#FFFFCC");
+//        $("#divMensaje").animate({"background-color"}
+    }
+
+    function ventanaMostrarPronostico() {
+        $("#ventanaPronosticos").toggle("slow");
+    }
+
+    function mostrarPronostico() {
+        $("#pronosticos").show();
+    }
+
+    function cerrarVentanaPronosticos() {
+        $("#ventanaPronosticos").toggle("slow");
+    }
+
+    function ingresoValido(evt) {
+        var charCode = (evt.which) ? evt.which : event.keyCode
+        if (charCode > 31 && (charCode < 48 || charCode > 57) || charCode == 8)
+            return false;
+        return true;
+    }
+</script>
+    
+    
+    
+    
+	@*<table>
+		<tr>
+			<td align="center">15 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Brasil</td>
+			<td align="center"><img src="/Content/img/Brasil.png" alt=""/></td>
+			<td align="center" width="5%"><input name="c1" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c2" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Japon.png"/ style="border:solid black 1px" alt=""/></td>
+			<td align="center">Japón</td>
+		</tr>
+		<tr>
+			<td align="center">16 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">México</td>
+			<td align="center"><img src="/Content/img/Mexico.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c3" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c4" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Italia.png"/ alt=""/></td>
+			<td align="center">Italia</td>
+		</tr>
+		<tr>
+			<td align="center">19 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Brasil</td>
+			<td align="center"><img src="/Content/img/Brasil.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c5" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c6" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Mexico.png"/ alt=""/></td>
+			<td align="center">México</td>
+		</tr>
+		<tr>
+			<td align="center">19 de junio</td>
+			<td align="center">19:00</td>
+			<td align="center">Italia</td>
+			<td align="center"><img src="/Content/img/Italia.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c7" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c8" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Japon.png"/ style="border:solid black 1px" alt=""/ style=""></td>
+			<td align="center">Japón</td>
+		</tr>
+		<tr>
+			<td align="center">22 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Italia</td>
+			<td align="center"><img src="/Content/img/Italia.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c9" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c10" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Brasil.png"/ alt=""/></td>
+			<td align="center">Brasil</td>
+		</tr>
+		<tr>
+			<td align="center">22 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Japón</td>
+			<td align="center"><img src="/Content/img/Japon.png"/ style="border:solid black 1px" alt=""/></td>
+			<td align="center" width="5%"><input name="c11" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c12" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Mexico.png"/ alt=""/></td>
+			<td align="center">México</td>
+		</tr>
+		<tr>
+			<td align="center">16 de junio</td>
+			<td align="center">19:00</td>
+			<td align="center">España</td>
+			<td align="center"><img src="/Content/img/España.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c13" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c14" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Uruguay.png"/ alt=""/></td>
+			<td align="center">Uruguay</td>
+		</tr>
+		<tr>
+			<td align="center">17 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Tahití</td>
+			<td align="center"><img src="/Content/img/Tahiti.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c15" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c16" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Nigeria.png"/ alt=""/></td>
+			<td align="center">Nigeria</td>
+		</tr>
+		<tr>
+			<td align="center">20 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">España</td>
+			<td align="center"><img src="/Content/img/España.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c17" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c18" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Tahiti.png"/ alt=""/></td>
+			<td align="center">Tahití</td>
+		</tr>
+		<tr>
+			<td align="center">20 de junio</td>
+			<td align="center">19:00</td>
+			<td align="center">Nigeria</td>
+			<td align="center"><img src="/Content/img/Nigeria.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c19" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c20" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Uruguay.png"/ alt=""/></td>
+			<td align="center">Uruguay</td>
+		</tr>
+		<tr>
+			<td align="center">23 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Nigeria</td>
+			<td align="center"><img src="/Content/img/Nigeria.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c21" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c22" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/España.png"/ alt=""/></td>
+			<td align="center">España</td>
+		</tr>
+		<tr>
+			<td align="center">23 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Uruguay</td>
+			<td align="center"><img src="/Content/img/Uruguay.png"/ alt=""/></td>
+			<td align="center" width="5%"><input name="c23" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c24" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"><img src="/Content/img/Tahiti.png"/ alt=""/></td>
+			<td align="center">Tahití</td>
+		</tr>
+		<tr>
+			<td align="center">26 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Ganador A</td>
+			<td align="center"></td>
+			<td align="center" width="5%"><input name="c25" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c26" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"></td>
+			<td align="center">Segundo B</td>
+		</tr>
+		<tr>
+			<td align="center">27 de junio</td>
+			<td align="center">16:00</td>
+			<td align="center">Ganador B</td>
+			<td align="center"></td>
+			<td align="center" width="5%"><input name="c27" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c28" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"></td>
+			<td align="center">Segunda A</td>
+		</tr>
+		<tr>
+			<td align="center">30 de junio</td>
+			<td align="center">13:00</td>
+			<td align="center">Perdedor Cruce 1</td>
+			<td align="center"></td>
+			<td align="center" width="5%"><input name="c29" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c30" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"></td>
+			<td align="center">Perdedor Cruce 2</td>
+		</tr>
+		<tr>
+			<td align="center">30 de junio</td>
+			<td align="center">19:00</td>
+			<td align="center">Ganador Cruce 1</td>
+			<td align="center"></td>
+			<td align="center" width="5%"><input name="c31" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center">-</td>
+			<td align="center" width="5%"><input name="c32" type="text" size="1" style="text-align:center;"/></td>
+			<td align="center"></td>
+			<td align="center">Ganador Cruce 2</td>
+		</tr>
+	</table>*@
+    
+    
